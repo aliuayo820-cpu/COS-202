@@ -1,0 +1,78 @@
+# ============================================
+# COS202 ASSIGNMENT
+# MATHEMATICAL CALCULATOR (MC)
+# ============================================
+
+def calculator():
+    while True:
+        print("\n===================================")
+        print("      MATHEMATICAL CALCULATOR")
+        print("===================================")
+        print("1. Addition (+)")
+        print("2. Subtraction (-)")
+        print("3. Multiplication (*)")
+        print("4. Division (/)")
+        print("5. Integer Division (//)")
+        print("6. Power (^)")
+        print("7. Modulus (%)")
+        print("8. Clear (C)")
+        print("9. OFF")
+        print("===================================")
+
+        choice = input("Select an option (1-9): ")
+
+        if choice == "9":
+            print("\nCalculator OFF.")
+            print("Thank you for using the calculator.")
+            break
+
+        elif choice == "8":
+            print("\nScreen Cleared!")
+            continue
+
+        elif choice in ["1", "2", "3", "4", "5", "6", "7"]:
+
+            num1 = float(input("Enter First Number: "))
+            num2 = float(input("Enter Second Number: "))
+
+            if choice == "1":
+                answer = num1 + num2
+                print("Answer =", answer)
+
+            elif choice == "2":
+                answer = num1 - num2
+                print("Answer =", answer)
+
+            elif choice == "3":
+                answer = num1 * num2
+                print("Answer =", answer)
+
+            elif choice == "4":
+                if num2 == 0:
+                    print("Error! Division by zero is not allowed.")
+                else:
+                    answer = num1 / num2
+                    print("Answer =", answer)
+
+            elif choice == "5":
+                if num2 == 0:
+                    print("Error! Division by zero is not allowed.")
+                else:
+                    answer = num1 // num2
+                    print("Answer =", answer)
+
+            elif choice == "6":
+                answer = num1 ** num2
+                print("Answer =", answer)
+
+            elif choice == "7":
+                if num2 == 0:
+                    print("Error! Modulus by zero is not allowed.")
+                else:
+                    answer = num1 % num2
+                    print("Answer =", answer)
+
+        else:
+            print("Invalid Selection! Please choose between 1 and 9.")
+
+calculator()
