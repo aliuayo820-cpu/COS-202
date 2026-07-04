@@ -1,0 +1,79 @@
+def get_grade_point(score):
+    # Selection control statements to determine grade point based on standard 5-point scale
+    if score >= 70:
+        return 5.0, 'A'
+    elif score >= 60:
+        return 4.0, 'B'
+    elif score >= 50:
+        return 3.0, 'C'
+    elif score >= 45:
+        return 2.0, 'D'
+    elif score >= 40:
+        return 1.0, 'E'
+    else:
+        return 0.0, 'F'
+
+def calculate_cgpa():
+    print("=============================================")
+    print("   PERSONAL POCKET CGPA CALCULATOR (PPC)     ")
+    print("=============================================")
+    
+    try:
+        num_courses = int(input("Enter the number of courses: "))
+        if num_courses <= 0:
+            print("Invalid number of courses.")
+            return
+
+        total_credit_units = 0
+        total_quality_points = 0
+
+        for i in range(1, num_courses + 1):
+            print(\nf"--- Course {i} ---")
+            credit_unit = int(input("Enter Credit Unit (e.g., 2, 3, 4): "))
+            score = float(input("Enter Score obtained (0-100): "))
+
+            if score < 0 or score > 100 or credit_unit <= 0:
+                print("Invalid inputs entered. Please restart the calculation.")
+                return
+
+            gp, grade = get_grade_point(score)
+            quality_point = credit_unit * gp
+            
+            total_credit_units += credit_unit
+            total_quality_points += quality_point
+            
+            print(f"Result: Grade = {grade}, Grade Point = {gp}, Quality Point = {quality_point}")
+
+        if total_credit_units == 0:
+            print("Total credit units cannot be zero.")
+            return
+
+        cgpa = total_quality_points / total_credit_units
+        print("\n=============================================")
+        print(f"TOTAL CREDIT UNITS: {total_credit_units}")
+        print(f"TOTAL QUALITY POINTS: {total_quality_points}")
+        print(f"YOUR CALCULATED CGPA: {cgpa:.2f}")
+        
+        # Classification of Degree using selection statements
+        if cgpa >= 4.50:
+            print("Class: First Class Honours 🎓")
+        elif cgpa >= 3.50:
+            print("Class: Second Class Honours (Upper Division)")
+        elif cgpa >= 2.40:
+            print("Class: Second Class Honours (Lower Division)")
+        elif cgpa >= 1.50:
+            print("Class: Third Class Honours")
+        else:
+            print("Class: Pass/Fail")
+        print("=============================================")
+
+    except ValueError:
+        print("Error: Please enter valid numbers only.")
+
+if __name__ == "__main__":
+    while True:
+        calculate_cgpa()
+        repeat = input("\nDo you want to calculate another CGPA? (yes/no): ").lower()
+        if repeat != 'yes' and repeat != 'y':
+            print("Thank you for using PPC! Goodbye.")
+            break
